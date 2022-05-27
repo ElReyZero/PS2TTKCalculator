@@ -1,13 +1,9 @@
-from ttk import getWeaponItem
-import asyncio
+from ttk import getTTK
 from modules import config as cfg
 
-
-async def main():
-    gun, datasheet = await getWeaponItem(108, cfg.service_id)
-    print(gun.name)
-    print(datasheet)
+def main():
+    print(getTTK('Betelgeuse 54-A', 1, 100))
 
 if __name__ == '__main__':
     cfg.get_config()
-    asyncio.get_event_loop().run_until_complete(main())
+    main()
