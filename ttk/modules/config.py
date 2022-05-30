@@ -12,6 +12,16 @@ class ConfigError(Exception):
         self.message = "Error in config file: " + msg
         super().__init__(self.message)
 
+class MissingConfig(Exception):
+    """
+    Raised when a config value is missing.
+
+    :param msg: Error message.
+    """
+    def __init__(self, msg: str):
+        self.message = "Missing config value: " + msg
+        super().__init__(self.message)
+
 
 ## DYNAMIC PARAMETERS:
 # (pulled from the config file)

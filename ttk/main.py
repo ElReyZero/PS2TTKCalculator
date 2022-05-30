@@ -1,9 +1,10 @@
 from ttk import getTTK
 from modules import config as cfg
 
-def main():
-    print(getTTK('Betelgeuse 54-A', 1, 100))
-
-if __name__ == '__main__':
+def main(weapon_name: str, shots: int, distance: float):
     cfg.get_config()
-    main()
+    return getTTK(weapon_name, shots, distance)
+
+def setConfig():
+    cfg.get_config()
+

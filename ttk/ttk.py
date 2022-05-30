@@ -2,6 +2,8 @@ from auraxium import census
 import modules.config as cfg
 import requests
 
+from ttk.modules.config import MissingConfig
+
 def getWeaponItemUrl(weapon_name:str)->tuple:
     """Get a weapon item url from the API.
 
@@ -10,6 +12,9 @@ def getWeaponItemUrl(weapon_name:str)->tuple:
         Returns:
             tuple: A tuple containing the weapon item and its datasheet.
     """
+    if cfg.service_id == "s:":
+        raise MissingConfig("service_id")
+        
     query = census.Query('item', service_id=cfg.service_id)
     query.add_term('name.en', weapon_name)
     query.create_join('weapon_datasheet')
@@ -50,3 +55,7 @@ def getTTK(weapon_name:str, shots:int, distance:float):
         return ttk
     except IndexError:
         return "Weapon not found."
+
+
+def getConfig():
+    cfg.get_config()

@@ -18,7 +18,6 @@ Features of the tool (to include or not active in current version):
 
 ### Python dependencies:
 - Python 3.8 or above is required to run the project.
-- We recommend using [pipenv](https://pypi.org/project/pipenv/) to set up the project environment. Pipenv will install automatically install the required dependencies from the `Pipfile` provided with the project.
 - Alternatively, the dependencies are also listed in the `requirements.txt` file (compatible with [venv](https://docs.python.org/3/library/venv.html))
 
 ### Discord Bot Component
@@ -28,11 +27,6 @@ The client-secret retrieved at this manual has to put into the configuration fil
 [General]
 token = RetrievedDiscordApiBotToken
 ```
-
-#### Create channels and roles
-To retrieve discord channel, message you have to enable Discord Developer Mode which can be toggled at appearance.
-`Copy ID` will then appear at the right click menu for channels, messages and roles.
-At that point you can populate the `[channels]` sections of the configuration file.
 
 ### Census ID
 Communication with the Daybreak Census API is required to retrieve weapon information, therefore you have to supply a Service ID.
