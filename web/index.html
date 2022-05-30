@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<script src="/web/js/ttk.js"></script>
+
+
+<label for="distance">Engagement distance:</label><br>
+<input type="number" id="distance" min="0" onchange="ttk()" ><br><br>
+
+<label for="velocity">Velocity:</label><br>
+<input type="number" id="velocity" min="0" onchange="ttk()"><br><br>
+
+<label for="refire_ms">Refire ms:</label><br>
+<input type="number" id="refire_ms" min="0" onchange="ttk()"><br><br>
+
+<label for="shots">Shots:</label><br>
+<input type="number" id="shots" min="0" onchange="ttk()"><br><br>
+
+<label for="heavyshield">Heavy shield:</label><br>
+<input type="checkbox" id="heavyshield" onchange="ttk()"><br><br>
+
+<label for="ttk_a">TTK:</label>
+<label id="ttk_result">∞</label>
+
+
+<!-- TTK Calulation (Subject to change):
+
+    ((refire_ms / heavyshield_value) * (shots - 1)) + (distance / velocity);
+
+-->
+
+<!--
+    ToDo:
+    - Add a weapon select dropdown
+    - Add a shield select dropdown for resist?
+    - Figure out the best calculation for the TTK given different values of damange & their shots to kill
+    - Polish the code and make it more readable
+    - Comment the code / add docstrings
+-->
+
+</html>
+
