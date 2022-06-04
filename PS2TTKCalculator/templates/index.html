@@ -1,9 +1,11 @@
+{% block content %}
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
 </head>
-<script src="/web/js/ttk.js"></script>
+<script src="{% static 'ttk.js' %}" type="module"></script>
 
 
 <label for="distance">Engagement distance:</label><br>
@@ -23,6 +25,7 @@
 
 <label for="ttk_a">TTK:</label>
 <label id="ttk_result">∞</label>
+{% endblock %}
 
 
 <!-- TTK Calulation (Subject to change):

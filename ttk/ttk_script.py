@@ -2,7 +2,7 @@ from auraxium import census
 import modules.config as cfg
 import requests
 
-from ttk.modules.config import MissingConfig
+from modules.config import MissingConfig
 
 def getWeaponItemUrl(weapon_name:str)->tuple:
     """Get a weapon item url from the API.

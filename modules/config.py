@@ -28,6 +28,7 @@ class MissingConfig(Exception):
 
 service_id = "s:"
 
+django_key = None
 
 def get_config():
     """
@@ -56,6 +57,13 @@ def get_config():
         _error_incorrect(service_id, 'General', file)
 
 
+    global django_key
+    try:
+        django_key = config["Django"]["django_key"]
+    except KeyError:
+        _error_missing(django_key, 'Django', file)
+    except ValueError:
+        _error_incorrect(django_key, 'Django', file)
 
 
 def _check_section(config, section, file):

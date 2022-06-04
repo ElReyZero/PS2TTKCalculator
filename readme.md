@@ -20,13 +20,6 @@ Features of the tool (to include or not active in current version):
 - Python 3.8 or above is required to run the project.
 - Alternatively, the dependencies are also listed in the `requirements.txt` file (compatible with [venv](https://docs.python.org/3/library/venv.html))
 
-### Discord Bot Component
-Create a bot application following the [discord.py documentation](https://discordpy.readthedocs.io/en/latest/discord.html).
-The client-secret retrieved at this manual has to put into the configuration file:
-```buildoutcfg
-[General]
-token = RetrievedDiscordApiBotToken
-```
 
 ### Census ID
 Communication with the Daybreak Census API is required to retrieve weapon information, therefore you have to supply a Service ID.
@@ -35,8 +28,30 @@ Once you obtained an ID, add it the configuration as `api_key`:
 ```
 [General]
 api_key = Daybreak_Registered_Service_ID
+
+[Django]
+django_key=Generated_Django_Secret_Key
 ```
+
+### Populate the weapon database:
+In order to populate the weapon database, go to:
+```
+localhost:8000/weapons
+```
+
+
 
 ## Web version of the tool (not yet implemented)):
 
 ### *TODO*
+Run the web server with the following commands:
+
+Windows:
+```
+python manage.py runserver
+```
+
+Linux:
+```
+python manage.py runserver
+```
