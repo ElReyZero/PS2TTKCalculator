@@ -26,7 +26,7 @@ SECRET_KEY = cfg.django_key
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ps2ttkcalculator.herokuapp.com']
+ALLOWED_HOSTS = ['ps2ttkcalculator.herokuapp.com', 'localhost']
 
 
 # Application definition
