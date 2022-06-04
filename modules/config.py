@@ -36,34 +36,36 @@ def get_config():
     """
     file = f"{pathlib.Path(__file__).parent.absolute()}/../config.cfg"
 
-    
-    if not os.path.isfile(file):
-        raise ConfigError(f"{file} not found! "+file)
-
-    config = ConfigParser(inline_comment_prefixes="#")
     try:
-        config.read(file)
-    except ParsingError as e:
-        raise ConfigError(f"Parsing Error in '{file}'\n{e}")
-
-    _check_section(config, "General", file)
-
-    global service_id
-    try:
-        service_id += config["General"]["service_id"]
+        global service_id
+        service_id += os.environ["SERVICE_ID"]
+        global django_key
+        django_key = os.environ["DJANGO_KEY"]
     except KeyError:
-        _error_missing(service_id, 'General', file)
-    except ValueError:
-        _error_incorrect(service_id, 'General', file)
+        if not os.path.isfile(file):
+            raise ConfigError(f"{file} not found! "+file)
 
+        config = ConfigParser(inline_comment_prefixes="#")
+        try:
+            config.read(file)
+        except ParsingError as e:
+            raise ConfigError(f"Parsing Error in '{file}'\n{e}")
 
-    global django_key
-    try:
-        django_key = config["Django"]["django_key"]
-    except KeyError:
-        _error_missing(django_key, 'Django', file)
-    except ValueError:
-        _error_incorrect(django_key, 'Django', file)
+        _check_section(config, "General", file)
+
+        try:
+            service_id += config["General"]["service_id"]
+        except KeyError:
+            _error_missing(service_id, 'General', file)
+        except ValueError:
+            _error_incorrect(service_id, 'General', file)
+
+        try:
+            django_key = config["Django"]["django_key"]
+        except KeyError:
+            _error_missing(django_key, 'Django', file)
+        except ValueError:
+            _error_incorrect(django_key, 'Django', file)
 
 
 def _check_section(config, section, file):
