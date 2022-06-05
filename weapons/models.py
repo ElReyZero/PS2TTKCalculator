@@ -11,3 +11,6 @@ class Weapon(models.Model):
     min_damage = models.IntegerField()
     damage_max_range = models.IntegerField()
     damage_min_range = models.IntegerField()
+
+    def __str__(self):
+        return self.name
