@@ -8,35 +8,36 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://unpkg.com/@trevoreyre/autocomplete-js/dist/style.css"/>
 </head>
-
 <script src="{% static 'ttk.js' %}"></script>
+<body>
+    <div class="container mt-5 pt-5 col-md-5">
+        <div class="col">
+            <h4>Weapon Lookup</h4>
+            <div id="autocomplete" class="autocomplete">
+                <input class="autocomplete-input" />
+                <ul class="autocomplete-result-list"></ul>
+            </div>
 
-<div class="container mt-5 pt-5 col-md-5">
-    <h4>Weapon Lookup</h4>
-    <div id="autocomplete" class="autocomplete">
-        <input class="autocomplete-input" />
-        <ul class="autocomplete-result-list"></ul>
-      </div>
+            <label for="distance">Engagement distance:</label><br>
+            <input type="number" id="distance" min="0" onchange="ttk()" ><br><br>
 
-    <label for="distance">Engagement distance:</label><br>
-    <input type="number" id="distance" min="0" onchange="ttk()" ><br><br>
+            <label for="velocity">Velocity:</label><br>
+            <input type="number" id="velocity" min="0" onchange="ttk()"><br><br>
 
-    <label for="velocity">Velocity:</label><br>
-    <input type="number" id="velocity" min="0" onchange="ttk()"><br><br>
+            <label for="refire_ms">Refire ms:</label><br>
+            <input type="number" id="refire_ms" min="0" onchange="ttk()"><br><br>
 
-    <label for="refire_ms">Refire ms:</label><br>
-    <input type="number" id="refire_ms" min="0" onchange="ttk()"><br><br>
+            <label for="shots">Shots:</label><br>
+            <input type="number" id="shots" min="0" onchange="ttk()"><br><br>
 
-    <label for="shots">Shots:</label><br>
-    <input type="number" id="shots" min="0" onchange="ttk()"><br><br>
+            <label for="heavyshield">Heavy shield:</label><br>
+            <input type="checkbox" id="heavyshield" onchange="ttk()"><br><br>
 
-    <label for="heavyshield">Heavy shield:</label><br>
-    <input type="checkbox" id="heavyshield" onchange="ttk()"><br><br>
-
-    <label for="ttk_a">TTK:</label>
-    <label id="ttk_result">∞</label>
-</div>
-
+            <label for="ttk_a">TTK:</label>
+            <label id="ttk_result">∞</label>
+        </div>
+    </div>
+</body>
 
 <script src="https://unpkg.com/@trevoreyre/autocomplete-js"></script>
 <script>
@@ -58,6 +59,7 @@
 </script>
 
 
+
 <!-- TTK Calulation (Subject to change):
 
     ((refire_ms / heavyshield_value) * (shots - 1)) + (distance / velocity);
@@ -66,7 +68,6 @@
 
 <!--
     ToDo:
-    - Add a weapon select dropdown
     - Add a shield select dropdown for resist?
     - Figure out the best calculation for the TTK given different values of damange & their shots to kill
     - Polish the code and make it more readable

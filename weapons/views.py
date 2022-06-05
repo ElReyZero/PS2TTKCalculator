@@ -1,11 +1,7 @@
-from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
+from django.http import HttpResponseBadRequest, JsonResponse
 from .db_script import push_all_weapons
 from .models import Weapon
 from django.forms.models import model_to_dict
-
-def populate(request):
-    push_all_weapons(push_db=True)
-    return HttpResponse("DB updated!")
 
 def weapon_search(request):
     weapon_list = request.GET.get('weapon')

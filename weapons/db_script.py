@@ -18,14 +18,12 @@ we_cats = {
     2: 'Knife',  
     3: 'Pistol',  
     8: 'Carbine',  
-    7: 'Assault Rifle',  
-    139: 'Infantry Abilities',  
+    7: 'Assault Rifle',
     4: 'Shotgun',  
     6: 'LMG',  
     13: 'Rocket Launcher',
     11: 'Sniper Rifle',  
-    18: 'Explosive',  
-    17: 'Grenade',  
+    18: 'Explosive', 
     5: 'SMG',  
     19: 'Battle Rifle',  
     24: 'Crossbow',  
@@ -37,15 +35,12 @@ we_cats = {
     22: 'AI MAX (Right)',  
     9: 'AV MAX (Left)',  
     23: 'AA MAX (Left)',  
-    147: 'Aerial Combat Weapon',  
+    147: 'Aerial Combat Weapon',
     104: 'Vehicle Weapons',  
     211: 'Colossus Primary Weapon',  
     144: 'ANT Top Turret',  
     157: 'Hybrid Rifle',  
-    126: 'Reaver Wing Mount',  
-    208: 'Bastion Point Defense',  
-    209: 'Bastion Bombard',  
-    210: 'Bastion Weapon System'  
+    126: 'Reaver Wing Mount' 
 }
 
 
