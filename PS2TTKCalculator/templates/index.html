@@ -8,7 +8,9 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://unpkg.com/@trevoreyre/autocomplete-js/dist/style.css"/>
 </head>
-<script src="{% static 'ttk.js' %}"></script>
+<script type="text/javascript" src="{% static 'ttk.js' %}"></script>
+<script type="text/javascript" src="{% static 'setWeaponToHTML.js' %}"></script>
+
 <body>
     <div class="container mt-5 pt-5 col-md-5">
         <div class="col">
@@ -17,24 +19,53 @@
                 <input class="autocomplete-input" />
                 <ul class="autocomplete-result-list"></ul>
             </div>
-
-            <label for="distance">Engagement distance:</label><br>
-            <input type="number" id="distance" min="0" onchange="ttk()" ><br><br>
-
-            <label for="velocity">Velocity:</label><br>
-            <input type="number" id="velocity" min="0" onchange="ttk()"><br><br>
-
-            <label for="refire_ms">Refire ms:</label><br>
-            <input type="number" id="refire_ms" min="0" onchange="ttk()"><br><br>
-
-            <label for="shots">Shots:</label><br>
-            <input type="number" id="shots" min="0" onchange="ttk()"><br><br>
-
-            <label for="heavyshield">Heavy shield:</label><br>
-            <input type="checkbox" id="heavyshield" onchange="ttk()"><br><br>
-
-            <label for="ttk_a">TTK:</label>
-            <label id="ttk_result">∞</label>
+            <div id="selectedWeaponDiv" class="row"style="visibility:hidden;">
+                <div class="col">
+                    <label>Weapon Selected</label><br><br>
+                    <label id="weapon-name"></label>
+                    <img id="weapon-image" src=""></img>
+                </div>
+            </div>
+            <div class="row">
+                <div id="manual-calculator" class="col">
+                    <label for="distance">Engagement distance:</label><br>
+                    <input type="number" id="distance" min="0" onchange="ttk()" ><br><br>
+        
+                    <label for="velocity">Velocity:</label><br>
+                    <input type="number" id="velocity" min="0" onchange="ttk()"><br><br>
+        
+                    <label for="refire_ms">Refire ms:</label><br>
+                    <input type="number" id="refire_ms" min="0" onchange="ttk()"><br><br>
+        
+                    <label for="shots">Shots:</label><br>
+                    <input type="number" id="shots" min="0" onchange="ttk()"><br><br>
+        
+                    <label for="heavyshield">Heavy shield:</label><br>
+                    <input type="checkbox" id="heavyshield" onchange="ttk()"><br><br>
+        
+                    <label for="ttk_a">TTK:</label>
+                    <label id="ttk_result">∞</label>
+                </div> 
+                <div id="weapon-calculator" class="col" style="visibility:hidden">
+                    <label for="distance">Engagement distance:</label><br>
+                    <input type="number" id="distance" min="0" onchange="ttk(false)" ><br><br>
+        
+                    <p>Velocity:</p>
+                    <p id="velocity"></p>
+        
+                    <p>Refire ms:</p>
+                    <p id="refire_ms"></p>
+        
+                    <label>Shots:</label><br>
+                    <input type="number" id="shots" min="0" onchange="ttk(false)"><br><br>
+        
+                    <label for="heavyshield">Heavy shield:</label><br>
+                    <input type="checkbox" id="heavyshield" onchange="ttk(false)"><br><br>
+        
+                    <label for="ttk_a">TTK:</label>
+                    <label id="ttk_result">∞</label>
+                </div> 
+            </div>
         </div>
     </div>
 </body>
@@ -53,7 +84,14 @@
         },
         onSubmit : result =>
         {
-            console.log(result)
+            var weapon_object = null;
+            new Promise(resolve => {
+                fetch(`weapons/search/?object=${result}`)
+                .then(response=> response.json())
+                .then(data => {
+                    resolve(data.data)
+                    setWeaponToHTML(data.data)})
+            })
         }
     })
 </script>

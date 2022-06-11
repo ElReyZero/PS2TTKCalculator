@@ -56,6 +56,7 @@ def get_unknown_weapon():
     n_data["min_damage"] = 0
     n_data["damage_max_range"] = 0
     n_data["damage_min_range"] = 0
+    n_data["image_link"] = None
     return n_data
 
 
@@ -66,7 +67,7 @@ def push_all_weapons(push_db=False):
         #Get all weapons from the category
         url = f'http://census.daybreakgames.com/{cfg.service_id}/get/ps2:v2/item/' \
               f'?item_type_id=26&is_vehicle_weapon=0&item_category_id={cat}' \
-              f'&c:limit=5000&c:show=item_id,item_category_id,name.en,faction_id&c:join=weapon_datasheet^inject_at:weapon.datasheet,fire_mode'
+              f'&c:limit=5000&c:show=item_id,item_category_id,name.en,faction_id,image_id&c:join=weapon_datasheet^inject_at:weapon.datasheet,fire_mode'
         response = requests.get(url)
         j_data = json.loads(response.content)
         print(we_cats[cat])  # Print category name
@@ -117,9 +118,12 @@ def push_all_weapons(push_db=False):
                 n_data["damage_min_range"] = int(we['item_id_join_fire_mode']['damage_min_range'])
             except KeyError:
                 n_data["damage_min_range"] = 0
+            try:
+                n_data["image_link"] = f"https://census.daybreakgames.com/files/ps2/images/static/{we['image_id']}.png"
+            except KeyError:
+                n_data["image_link"] = None
 
             giga_list.append(n_data)
-
             # Find weapons new to database:
             try:
                 Weapon.objects.get(id=n_data["id"])

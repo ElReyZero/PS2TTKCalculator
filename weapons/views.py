@@ -1,5 +1,4 @@
-from django.http import HttpResponseBadRequest, JsonResponse
-from .db_script import push_all_weapons
+from django.http import JsonResponse
 from .models import Weapon
 from django.forms.models import model_to_dict
 
@@ -15,10 +14,10 @@ def weapon_search(request):
             payload.append(weapon_result.name)
         return JsonResponse({'status':200, 'data' : payload})
     elif weapon_obj:
-        query_result = Weapon.objects.filter(name__icontains=weapon_obj)
-
-        for weapon_result in query_result:
-            payload.append(model_to_dict(weapon_result))
-        return JsonResponse({'status':200, 'data' : payload})
+        try:
+            query_result = Weapon.objects.get(name=weapon_obj)
+        except Weapon.DoesNotExist:
+            return JsonResponse({'status':404, 'data' : 'Weapon not found'})
+        return JsonResponse({'status':200, 'data' : model_to_dict(query_result)})
     else:
-        return HttpResponseBadRequest()
+        return JsonResponse({'status':404, 'data' : 'Weapon not found'})

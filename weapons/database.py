@@ -16,7 +16,8 @@ def save_weapons_to_db(weapon_list):
                 max_damage=weapon["max_damage"],
                 min_damage=weapon["min_damage"],
                 damage_max_range=weapon["damage_max_range"],
-                damage_min_range=weapon["damage_min_range"]
+                damage_min_range=weapon["damage_min_range"],
+                image_path=weapon["image_link"]
             )
             weapons.append(new_weapon)
 
