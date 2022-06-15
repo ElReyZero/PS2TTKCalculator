@@ -35,7 +35,7 @@ django_key=Generated_Django_Secret_Key
 ```
 
 ### Database
-The database is used to store the weapon information 
+This project uses a PostgreSQL database to store and query the weapon information used to calculate the TTK.
 
 ```
 [Database]
