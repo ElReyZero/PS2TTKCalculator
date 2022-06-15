@@ -3,11 +3,11 @@
 This is a tool to help you calculate the theroretical time to kill (TTK) for a given weapon. It is based on the aspects of the [BWAE Battle Bot](https://github.com/ElReyZero/BWAEBattleBot). There will be both a discord bot and a well as a web app in this repo.
 
 Features of the tool (to include or not active in current version):
-[ ] Variable Weapon
-[ ] Variable Distance
+[X] Variable Weapon
+[X] Variable Distance
 [ ] Where bullets land (Headshots/Bodyshots)
-[ ] Heavy Overshield 
-[ ] Soft Point Ammo and Hard Point
+[X] Heavy Overshield 
+[ ] Soft Point Ammo and Hard Velocity Ammo
 
 ## Discord bot version of the tool:
 
@@ -28,20 +28,25 @@ Once you obtained an ID, add it the configuration as `api_key`:
 ```
 [General]
 api_key = Daybreak_Registered_Service_ID
+```
 
+## Web version of the tool:
+This project uses the Django framework to implement its web version, in order for it to work, you need to set up a django token on the config file:
+```
 [Django]
 django_key=Generated_Django_Secret_Key
 ```
 
-### Populate the weapon database:
-In order to populate the weapon database, go to:
+### Database
+The database is used to store the weapon information 
+
 ```
-localhost:8000/weapons
+[Database]
+host= Database Host
+name= Database Name
+user= Database User
+password= Database Password
 ```
-
-
-
-## Web version of the tool (not yet implemented)):
 
 ### *TODO*
 Run the web server with the following commands:

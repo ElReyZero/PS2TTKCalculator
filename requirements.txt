@@ -1,4 +1,4 @@
 django>=4.0.5
-auraxium>=0.2.0b4
 requests>=2.27.1
 django-bootstrap4>=22.1
+psycopg2-binary>=2.9.3
