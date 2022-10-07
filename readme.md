@@ -2,6 +2,9 @@
 
 This is a tool to help you calculate the theroretical time to kill (TTK) for a given weapon. It is based on the aspects of the [BWAE Battle Bot](https://github.com/ElReyZero/BWAEBattleBot). There will be both a python script as well as a web app in this repo.
 
+# Note:
+This project has been archived due to Heroku changing their free dynos policies!
+
 Features of the tool (to include or not active in current version):
 [X] Variable Weapon  
 [X] Variable Distance  
